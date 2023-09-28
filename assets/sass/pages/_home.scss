@@ -5,17 +5,22 @@
 }
 
 .particles {
-  position: absolute;
+  position: fixed;
   z-index: 0;
   top: 0;
+  bottom: 0;
 }
 
 .layout {
-  gap: 5rem;
   position: relative;
   z-index: 1;
+  gap: 2rem;
 
   &-left {
+    position: sticky;
+    top: 3rem;
+    flex: 1;
+    height: 60rem;
     padding: 3rem 4rem;
 
     border-radius: 5rem;
@@ -23,6 +28,13 @@
 
     @include dflex(center, space-evenly);
     flex-direction: column;
+
+    @include mobile {
+      position: relative;
+      margin-bottom: 5rem;
+      padding: 2rem;
+      height: 100%;
+    }
 
     &-wrapper {
       width: 20rem;
@@ -40,11 +52,19 @@
       margin: 2rem auto;
 
       font-weight: bold;
-      color: #1f1f1f;
+      color: #424e5f;
+
+      @include mobile {
+        margin: 1rem auto;
+      }
     }
 
     &-icon {
       margin-bottom: 2rem;
+
+      @include mobile {
+        margin: 1rem auto;
+      }
 
       i {
         font-size: 4rem;
@@ -73,11 +93,114 @@
           p {
             margin: 0;
           }
+
+          a {
+            font-weight: bold;
+          }
         }
       }
     }
   }
 
   &-right {
+    flex: 2;
+
+    padding: 3rem 4rem;
+
+    border-radius: 5rem;
+    background-color: #f1f1f1;
+
+    @include mobile {
+      padding: 2rem;
+    }
+
+    &-intro {
+      p {
+        font-size: 2rem;
+        font-weight: 500;
+        color: #424e5f;
+
+        @include mobile {
+          text-align: justify;
+        }
+      }
+    }
+
+    &-project {
+      margin-top: 6rem;
+
+      @include mobile {
+        margin-top: 4rem;
+      }
+
+      &-items {
+        @include dflex;
+        gap: 2rem;
+
+        &:not(:last-child) {
+          margin: 3rem auto;
+        }
+
+        &:hover .project-wrapper {
+          box-shadow: 1px 5px 2rem #0d6dfd9d;
+        }
+
+        &:hover .project-wrapper img {
+          transform: scale(1.07);
+        }
+
+        &:hover .project-infor h3 {
+          color: #0d6efd;
+        }
+
+        .project-wrapper {
+          flex: 2;
+          width: 40rem;
+          height: 20rem;
+
+          border-radius: 2rem;
+          box-shadow: 1px 5px 2rem #00000077;
+          overflow: hidden;
+
+          transition: all 0.2s ease-in-out;
+
+          @include tablet {
+            width: 30rem;
+            height: 10rem;
+          }
+
+          @include mobile {
+            width: 5rem;
+            height: 15rem;
+          }
+
+          a {
+            img {
+              width: 100%;
+              height: 100%;
+
+              object-fit: cover;
+              transition: all 0.2s ease-in-out;
+            }
+          }
+        }
+
+        .project-infor {
+          flex: 3;
+
+          align-self: self-start;
+
+          h3 {
+            font-size: 2.5rem;
+            transition: all 0.2s ease-in-out;
+          }
+
+          p {
+            font-style: italic;
+            font-size: 2rem;
+          }
+        }
+      }
+    }
   }
 }
